@@ -41,5 +41,5 @@ jobs:
       - name: Build
         run: ${{ inputs.build }}
 
-      - name: Publish prerelease
+      - name: Publish pre-release
         run: pnpm dlx pkg-pr-new@0.0 publish --pnpm ${{ inputs.compact && '--compact' || '' }} ${{ inputs.packages }}
