@@ -38,14 +38,14 @@ jobs:
           cache: pnpm
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Generate Changelog
+      - name: Generate GitHub Changelog
         run: npx changelogithub
         continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install Dependencies
-        run: pnpm i
+        run: pnpm install
         if: ${{ inputs.publish }}
 
       - name: Build

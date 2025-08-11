@@ -41,8 +41,8 @@ jobs:
           node-version: lts/*
           cache: pnpm
 
-      - name: Install
-        run: pnpm i
+      - name: Install Dependencies
+        run: pnpm install
 
       - name: Type Check
         run: ${{ inputs.typecheck }}
@@ -75,8 +75,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: pnpm
 
-      - name: Install
-        run: pnpm i
+      - name: Install Dependencies
+        run: pnpm install
 
       - name: Build
         run: ${{ inputs.build }}
