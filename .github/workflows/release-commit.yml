@@ -1,4 +1,4 @@
-name: Release Pre-release
+name: Release Commit
 on:
   workflow_call:
     inputs:
@@ -16,8 +16,8 @@ on:
         default: ''
 
 jobs:
-  publish:
-    name: Publish Pre-release
+  release:
+    name: Release Commit
     runs-on: ubuntu-latest
 
     steps:
@@ -41,5 +41,5 @@ jobs:
       - name: Build
         run: ${{ inputs.build }}
 
-      - name: Publish pre-release
+      - name: Publish
         run: pnpm dlx pkg-pr-new@0.0 publish --pnpm ${{ inputs.compact && '--compact' || '' }} ${{ inputs.packages }}
