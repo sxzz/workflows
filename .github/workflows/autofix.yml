@@ -1,0 +1,40 @@
+name: autofix.ci
+
+on:
+  workflow_call:
+    inputs:
+      command:
+        required: false
+        type: string
+        default: 'pnpm run lint --fix'
+
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4.1.0
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Fix
+        run: ${{ inputs.command }}
+        if: ${{ inputs.command != '' }}
+
+      - name: Commit
+        uses: autofix-ci/action@v1
