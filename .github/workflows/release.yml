@@ -39,7 +39,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Generate GitHub Changelog
-        run: npx changelogithub
+        run: pnpx changelogithub
         continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
