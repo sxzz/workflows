@@ -3,6 +3,10 @@ name: Release
 on:
   workflow_call:
     inputs:
+      install:
+        required: false
+        type: string
+        default: 'pnpm install'
       publish:
         required: false
         type: boolean
@@ -45,7 +49,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install Dependencies
-        run: pnpm install
+        run: ${{ inputs.install }}
         if: ${{ inputs.publish }}
 
       - name: Build

@@ -3,6 +3,11 @@ name: Release JSR
 on:
   workflow_call:
     inputs:
+      install:
+        required: false
+        type: string
+        default: 'pnpm install'
+
       build:
         required: false
         type: string
@@ -32,7 +37,7 @@ jobs:
           cache: pnpm
 
       - name: Install Dependencies
-        run: pnpm install
+        run: ${{ inputs.install }}
 
       - name: Build
         run: ${{ inputs.build }}

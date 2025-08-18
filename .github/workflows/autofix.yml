@@ -3,6 +3,10 @@ name: autofix.ci
 on:
   workflow_call:
     inputs:
+      install:
+        required: false
+        type: string
+        default: 'pnpm install'
       command:
         required: false
         type: string
@@ -30,7 +34,7 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install
+        run: ${{ inputs.install }}
 
       - name: Fix
         run: ${{ inputs.command }}

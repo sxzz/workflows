@@ -3,6 +3,11 @@ name: Unit Test
 on:
   workflow_call:
     inputs:
+      install:
+        required: false
+        type: string
+        default: 'pnpm install'
+
       typecheck:
         required: false
         type: string
@@ -42,7 +47,7 @@ jobs:
           cache: pnpm
 
       - name: Install Dependencies
-        run: pnpm install
+        run: ${{ inputs.install }}
 
       - name: Type Check
         run: ${{ inputs.typecheck }}
@@ -76,7 +81,7 @@ jobs:
           cache: pnpm
 
       - name: Install Dependencies
-        run: pnpm install
+        run: ${{ inputs.install }}
 
       - name: Build
         run: ${{ inputs.build }}
