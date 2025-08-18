@@ -28,9 +28,15 @@ on:
         type: string
         default: 'pnpm run test'
 
+      skip-lint:
+        required: false
+        type: boolean
+        default: false
+
 jobs:
   lint:
     runs-on: ubuntu-latest
+    if: ${{ !inputs.skip-lint }}
     steps:
       - name: Checkout
         uses: actions/checkout@v5
