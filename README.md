@@ -6,6 +6,13 @@ A collection of reusable GitHub Actions workflows for TypeScript projects.
 
 This repository provides a set of standardized, reusable GitHub Actions workflows that can be used across multiple projects to automate common CI/CD tasks like testing, building, and releasing.
 
+## Examples
+
+- [Publish Any Commit](./examples/release-commit.yml)
+- [Unit Test](./examples/unit-test.yml)
+- [Release](./examples/release.yml)
+- [Auto Fix](./examples/autofix.yml)
+
 ## Sponsors
 
 <p align="center">
