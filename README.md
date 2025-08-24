@@ -1,17 +1,44 @@
-# workflows
+# sxzz/workflows
 
-A collection of reusable GitHub Actions workflows for TypeScript projects.
+A collection of reusable GitHub Actions workflows and actions for TypeScript projects.
 
-## Overview
+## Features
 
-This repository provides a set of standardized, reusable GitHub Actions workflows that can be used across multiple projects to automate common CI/CD tasks like testing, building, and releasing.
+- Standardized CI/CD workflows for testing, building, and releasing
+- Easy integration into any TypeScript repository
+- Includes custom actions for setup and automation
 
-## Examples
+## Included Workflows
 
-- [Publish Any Commit](./examples/release-commit.yml)
+- **Unit Test**: Runs tests and reports coverage
+- **Release**: Publishes releases to npm/JSR
+- **Auto Fix**: Automatically fixes code style issues
+- **Publish Any Commit**: Releases any commit as a package
+
+## Usage
+
+To use a workflow, reference it in your project’s `.github/workflows/*.yml`:
+
+```yaml
+# Example: Unit Test
+name: Unit Test
+uses: sxzz/workflows/.github/workflows/unit-test.yml@main
+```
+
+See the [`examples/`](./examples) folder for sample workflow configurations:
+
 - [Unit Test](./examples/unit-test.yml)
 - [Release](./examples/release.yml)
 - [Auto Fix](./examples/autofix.yml)
+- [Publish Any Commit](./examples/release-commit.yml)
+
+## Actions
+
+- [`setup-js/action.yml`](./setup-js/action.yml): Sets up Node.js and installs dependencies
+
+## Contributing
+
+Contributions and suggestions are welcome! Please open issues or pull requests.
 
 ## Sponsors
 
@@ -23,4 +50,4 @@ This repository provides a set of standardized, reusable GitHub Actions workflow
 
 ## License
 
-[MIT](./LICENSE) License © 2025 [Kevin Deng](https://github.com/sxzz)
+[MIT](./LICENSE) License © 2025-PRESENT [Kevin Deng](https://github.com/sxzz)
