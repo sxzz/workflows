@@ -29,7 +29,7 @@ runs:
       uses: actions/checkout@v5
       with:
         persist-credentials: false
-        fetch-depth: '${{ inputs.fetch-all && 0 || 1 }}'
+        fetch-depth: "${{ inputs.fetch-all && '0' || '1' }}"
 
     - name: Install pnpm
       uses: pnpm/action-setup@v4.1.0
