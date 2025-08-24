@@ -3,30 +3,25 @@ name: Unit Test
 on:
   workflow_call:
     inputs:
-      install:
-        required: false
-        type: string
-        default: 'pnpm install'
-
       typecheck:
         required: false
         type: string
-        default: 'pnpm run typecheck'
+        default: pnpm run typecheck
 
       lint:
         required: false
         type: string
-        default: 'pnpm run lint'
+        default: pnpm run lint
 
       build:
         required: false
         type: string
-        default: 'pnpm run build'
+        default: pnpm run build
 
       test:
         required: false
         type: string
-        default: 'pnpm run test'
+        default: pnpm run test
 
       skip-lint:
         required: false
@@ -43,22 +38,8 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ !inputs.skip-lint }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-        with:
-          persist-credentials: false
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4.1.0
-
-      - name: Set node
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-          cache: pnpm
-
-      - name: Install Dependencies
-        run: ${{ inputs.install }}
+      - name: Setup JS
+        uses: sxzz/workflows/setup-js@v1
 
       - name: Type Check
         run: ${{ inputs.typecheck }}
@@ -78,22 +59,10 @@ jobs:
     if: ${{ !inputs.skip-test }}
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-        with:
-          persist-credentials: false
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4.1.0
-
-      - name: Set node ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Setup JS
+        uses: sxzz/workflows/setup-js@v1
         with:
           node-version: ${{ matrix.node-version }}
-          cache: pnpm
-
-      - name: Install Dependencies
-        run: ${{ inputs.install }}
 
       - name: Build
         run: ${{ inputs.build }}

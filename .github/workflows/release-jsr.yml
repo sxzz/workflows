@@ -3,11 +3,6 @@ name: Release JSR
 on:
   workflow_call:
     inputs:
-      install:
-        required: false
-        type: string
-        default: 'pnpm install'
-
       build:
         required: false
         type: string
@@ -22,22 +17,8 @@ jobs:
       id-token: write
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-        with:
-          persist-credentials: false
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4.1.0
-
-      - name: Set node
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-          cache: pnpm
-
-      - name: Install Dependencies
-        run: ${{ inputs.install }}
+      - name: Setup JS
+        uses: sxzz/workflows/setup-js@v1
 
       - name: Build
         run: ${{ inputs.build }}

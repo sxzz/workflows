@@ -1,0 +1,47 @@
+name: Setup JavaScript
+description: Setup JavaScript environment
+
+inputs:
+  fetch-all:
+    description: Whether to fetch all history for all branches and tags.
+    required: false
+    default: false
+
+  node-version:
+    description: 'Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.'
+    required: false
+    default: 'lts/*'
+
+  auto-install:
+    description: Whether to automatically install dependencies.
+    required: false
+    default: true
+
+  package-manager:
+    description: 'Package manager to use. Examples: npm, yarn, pnpm.'
+    required: false
+    default: pnpm
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v5
+      with:
+        persist-credentials: false
+        fetch-depth: '${{ inputs.fetch-all && 0 || 1 }}'
+
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4.1.0
+
+    - name: Setup node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: ${{ inputs.package-manager }}
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Install dependencies
+      shell: bash
+      run: ${{ inputs.package-manager }} install
+      if: ${{ inputs.auto-install }}
