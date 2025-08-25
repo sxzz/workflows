@@ -2,6 +2,11 @@ name: Setup JavaScript
 description: Setup JavaScript environment
 
 inputs:
+  persist-credentials:
+    description: Whether to configure the token or SSH key with the local git config
+    required: false
+    default: false
+
   fetch-all:
     description: Whether to fetch all history for all branches and tags.
     required: false
@@ -28,7 +33,7 @@ runs:
     - name: Checkout
       uses: actions/checkout@v5
       with:
-        persist-credentials: false
+        persist-credentials: ${{ inputs.persist-credentials }}
         fetch-depth: "${{ inputs.fetch-all && '0' || '1' }}"
 
     - name: Install pnpm
