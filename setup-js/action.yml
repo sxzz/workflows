@@ -4,27 +4,22 @@ description: Setup JavaScript environment
 inputs:
   persist-credentials:
     description: Whether to configure the token or SSH key with the local git config
-    required: false
     default: false
 
   fetch-all:
     description: Whether to fetch all history for all branches and tags.
-    required: false
     default: false
 
   node-version:
     description: 'Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.'
-    required: false
     default: 'lts/*'
 
   auto-install:
     description: Whether to automatically install dependencies.
-    required: false
     default: true
 
   package-manager:
     description: 'Package manager to use. Examples: npm, yarn, pnpm.'
-    required: false
     default: pnpm
 
 runs:
@@ -34,7 +29,7 @@ runs:
       uses: actions/checkout@v5
       with:
         persist-credentials: ${{ inputs.persist-credentials }}
-        fetch-depth: "${{ inputs.fetch-all && '0' || '1' }}"
+        fetch-depth: "${{ inputs.fetch-all == 'true' && '0' || '1' }}"
 
     - name: Install pnpm
       uses: pnpm/action-setup@v4.1.0
