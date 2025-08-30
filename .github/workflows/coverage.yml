@@ -21,6 +21,6 @@ jobs:
         run: ${{ inputs.test }}
 
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@3cb13a12348ef4ffcf9783ac0f74954f92113e33 # v5.5.0
         with:
           use_oidc: true

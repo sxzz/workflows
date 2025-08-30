@@ -26,16 +26,16 @@ runs:
   using: composite
   steps:
     - name: Checkout
-      uses: actions/checkout@v5
+      uses: actions/checkout@ff7abcd0c3c05ccf6adc123a8cd1fd4fb30fb493 # v5.0.0
       with:
         persist-credentials: ${{ inputs.persist-credentials }}
         fetch-depth: "${{ inputs.fetch-all == 'true' && '0' || '1' }}"
 
     - name: Install pnpm
-      uses: pnpm/action-setup@v4.1.0
+      uses: pnpm/action-setup@f2b2b233b538f500472c7274c7012f57857d8ce0 # v4.1.0
 
     - name: Setup node
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@d7a11313b581b306c961b506cfc8971208bb03f6 # v4.4.0
       with:
         node-version: ${{ inputs.node-version }}
         cache: ${{ inputs.package-manager }}

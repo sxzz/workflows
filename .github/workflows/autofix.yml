@@ -26,4 +26,4 @@ jobs:
         if: ${{ inputs.command != '' }}
 
       - name: Commit
-        uses: autofix-ci/action@v1
+        uses: autofix-ci/action@635ffb0c9798bd160680f18fd73371e355b85f27 # v1.3.2
