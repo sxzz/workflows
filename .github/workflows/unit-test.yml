@@ -33,6 +33,11 @@ on:
         type: boolean
         default: false
 
+      build-for-lint:
+        required: false
+        type: boolean
+        default: false
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -40,6 +45,10 @@ jobs:
     steps:
       - name: Setup JS
         uses: sxzz/workflows/setup-js@v1
+
+      - name: Build
+        run: ${{ inputs.build }}
+        if: ${{ inputs.build-for-lint }}
 
       - name: Type Check
         run: ${{ inputs.typecheck }}
