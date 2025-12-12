@@ -4,7 +4,11 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "typecheck": "echo skip typecheck",
+    "build": "echo skip build",
+    "test": "echo skip test"
   },
   "devDependencies": {
     "@sxzz/eslint-config": "^7.4.0",
