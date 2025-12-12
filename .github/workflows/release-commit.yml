@@ -32,4 +32,4 @@ jobs:
         run: ${{ inputs.build }}
 
       - name: Publish
-        run: pnpm dlx pkg-pr-new@0.0 publish --pnpm ${{ inputs.compact && '--compact' || '' }} ${{ inputs.packages }} ${{ inputs.packageManager && `--packageManager=${{ inputs.packageManager }}` || '' }}
+        run: pnpm dlx pkg-pr-new@0.0 publish --pnpm ${{ inputs.compact && '--compact' || '' }} ${{ inputs.packages }} ${{ inputs.packageManager && format('--packageManager={0}', inputs.packageManager) || '' }}
