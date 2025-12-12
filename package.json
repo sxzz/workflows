@@ -1,8 +1,8 @@
 {
+  "type": "module",
   "version": "1.1.0",
   "private": true,
-  "packageManager": "pnpm@10.24.0",
-  "type": "module",
+  "packageManager": "pnpm@10.25.0",
   "license": "MIT",
   "scripts": {
     "lint": "eslint .",
@@ -13,11 +13,11 @@
     "release": "bumpp && ./release.sh"
   },
   "devDependencies": {
-    "@sxzz/eslint-config": "^7.4.0",
+    "@sxzz/eslint-config": "^7.4.1",
     "@sxzz/prettier-config": "^2.2.6",
     "bumpp": "^10.3.2",
     "eslint": "^9.39.1",
-    "prettier": "^3.7.3"
+    "prettier": "^3.7.4"
   },
   "prettier": "@sxzz/prettier-config"
 }
