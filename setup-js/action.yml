@@ -22,6 +22,10 @@ inputs:
     description: 'Package manager to use. Examples: npm, yarn, pnpm.'
     default: pnpm
 
+  no-frozen-lockfile:
+    description: Whether to disable frozen lockfile installation.
+    default: 'false'
+
 runs:
   using: composite
   steps:
@@ -44,5 +48,5 @@ runs:
 
     - name: Install dependencies
       shell: bash
-      run: ${{ inputs.package-manager }} install
+      run: ${{ inputs.package-manager }} install ${{ inputs.no-frozen-lockfile == 'true' && '--no-frozen-lockfile' || '' }}
       if: ${{ inputs.auto-install }}
