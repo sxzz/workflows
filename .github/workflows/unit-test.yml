@@ -3,6 +3,11 @@ name: Unit Test
 on:
   workflow_call:
     inputs:
+      node-versions:
+        required: false
+        type: string
+        default: '20,22,24,25'
+
       typecheck:
         required: false
         type: string
@@ -62,7 +67,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node-version: [20, 22, 24, 25]
+        node-version: ${{ fromJson(format('[{0}]', inputs.node-versions)) }}
       fail-fast: false
 
     if: ${{ !inputs.skip-test }}
