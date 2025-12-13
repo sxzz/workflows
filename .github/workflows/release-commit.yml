@@ -14,7 +14,7 @@ on:
         required: false
         type: string
         default: ''
-      packageManager:
+      comment-package-manager:
         required: false
         type: string
         default: ''
@@ -32,4 +32,4 @@ jobs:
         run: ${{ inputs.build }}
 
       - name: Publish
-        run: pnpm dlx pkg-pr-new@0.0 publish --pnpm ${{ inputs.compact && '--compact' || '' }} ${{ inputs.packages }} ${{ inputs.packageManager && format('--packageManager={0}', inputs.packageManager) || '' }}
+        run: pnpm dlx pkg-pr-new@0.0 publish --pnpm ${{ inputs.compact && '--compact' || '' }} ${{ inputs.packages }} ${{ inputs['comment-package-manager'] && format('--packageManager={0}', inputs['comment-package-manager']) || '' }}
