@@ -1,0 +1,4 @@
+ignoredBuiltDependencies:
+  - unrs-resolver
+strictDepBuilds: true
+trustPolicy: no-downgrade
