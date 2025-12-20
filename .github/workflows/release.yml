@@ -3,6 +3,10 @@ name: Release
 on:
   workflow_call:
     inputs:
+      github-release:
+        required: false
+        type: boolean
+        default: true
       publish:
         required: false
         type: boolean
@@ -30,6 +34,7 @@ jobs:
       - name: Generate GitHub Changelog
         run: pnpx changelogithub
         continue-on-error: true
+        if: ${{ inputs.github-release }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
