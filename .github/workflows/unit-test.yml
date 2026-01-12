@@ -3,6 +3,16 @@ name: Unit Test
 on:
   workflow_call:
     inputs:
+      primary-os:
+        required: false
+        type: string
+        default: ubuntu-slim
+
+      os-matrix:
+        required: false
+        type: string
+        default: '"ubuntu-slim", "windows-latest"'
+
       node-versions:
         required: false
         type: string
@@ -45,7 +55,7 @@ on:
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.primary-os }}
     if: ${{ !inputs.skip-lint }}
     steps:
       - name: Setup JS
@@ -66,7 +76,7 @@ jobs:
   test:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: ${{ fromJson(format('[{0}]', inputs.os-matrix)) }}
         node-version: ${{ fromJson(format('[{0}]', inputs.node-versions)) }}
       fail-fast: false
 

@@ -12,10 +12,14 @@ on:
         required: false
         type: string
         default: pnpm run lint --fix
+      os:
+        required: false
+        type: string
+        default: ubuntu-slim
 
 jobs:
   autofix:
-    runs-on: ubuntu-slim
+    runs-on: ${{ inputs.os || 'ubuntu-slim' }}
     permissions:
       contents: read
 
