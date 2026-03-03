@@ -15,6 +15,10 @@ on:
         required: false
         type: string
         default: ''
+      tag:
+        required: false
+        type: string
+        default: ''
 
 jobs:
   release:
@@ -43,5 +47,5 @@ jobs:
         if: ${{ inputs.build && inputs.publish }}
 
       - name: Publish to NPM
-        run: pnpm -r publish --access public --no-git-checks
+        run: pnpm -r publish --access public --no-git-checks ${{ inputs['tag'] && format('--tag {0}', inputs['tag']) || '' }}
         if: ${{ inputs.publish }}
