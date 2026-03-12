@@ -6,12 +6,12 @@ on:
       primary-os:
         required: false
         type: string
-        default: ubuntu-slim
+        default: ubuntu-latest
 
       os-matrix:
         required: false
         type: string
-        default: '"ubuntu-slim", "windows-latest"'
+        default: '"ubuntu-latest", "windows-latest"'
 
       node-versions:
         required: false
