@@ -25,7 +25,7 @@ jobs:
 
     steps:
       - name: Setup JS
-        uses: sxzz/workflows/setup-js@v1
+        uses: sxzz/workflows/setup-js@next
         with:
           no-frozen-lockfile: true
 

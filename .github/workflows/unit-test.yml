@@ -59,7 +59,7 @@ jobs:
     if: ${{ !inputs.skip-lint }}
     steps:
       - name: Setup JS
-        uses: sxzz/workflows/setup-js@v1
+        uses: sxzz/workflows/setup-js@next
 
       - name: Build
         run: ${{ inputs.build }}
@@ -84,7 +84,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Setup JS
-        uses: sxzz/workflows/setup-js@v1
+        uses: sxzz/workflows/setup-js@next
         with:
           node-version: ${{ matrix.node-version }}
 

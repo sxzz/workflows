@@ -10,4 +10,4 @@ permissions: {}
 
 jobs:
   unit-test:
-    uses: sxzz/workflows/.github/workflows/unit-test.yml@main
+    uses: sxzz/workflows/.github/workflows/unit-test.yml@next
