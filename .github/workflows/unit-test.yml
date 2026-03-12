@@ -16,7 +16,7 @@ on:
       node-versions:
         required: false
         type: string
-        default: '20,22,24,25'
+        default: '22,24,25'
 
       typecheck:
         required: false
