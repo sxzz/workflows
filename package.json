@@ -2,7 +2,7 @@
   "type": "module",
   "version": "1.4.0",
   "private": true,
-  "packageManager": "pnpm@10.33.2",
+  "packageManager": "pnpm@11.0.4",
   "license": "MIT",
   "scripts": {
     "lint": "eslint .",
@@ -16,8 +16,8 @@
     "@sxzz/eslint-config": "^8.0.0",
     "@sxzz/prettier-config": "^2.3.1",
     "bumpp": "^11.0.1",
-    "eslint": "^10.2.0",
-    "prettier": "^3.8.2"
+    "eslint": "^10.3.0",
+    "prettier": "^3.8.3"
   },
   "prettier": "@sxzz/prettier-config"
 }
