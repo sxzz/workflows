@@ -2,9 +2,9 @@ name: Unit Test Dogfooding
 
 on:
   push:
-    branches: [main, next]
+    branches: [main]
   pull_request:
-    branches: [main, next]
+    branches: [main]
 
 permissions: {}
 

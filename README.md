@@ -2,6 +2,9 @@
 
 A collection of reusable GitHub Actions workflows and actions for TypeScript projects.
 
+> [!WARNING]
+> Due to GitHub Actions limitations and this project's goal of avoiding frequent per-project workflow updates, future changes may include breaking updates and **do not follow** SemVer.
+
 ## Features
 
 - Standardized CI/CD workflows for testing, building, and releasing

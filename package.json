@@ -1,6 +1,5 @@
 {
   "type": "module",
-  "version": "2.0.0",
   "private": true,
   "packageManager": "pnpm@11.0.4",
   "license": "MIT",
@@ -9,13 +8,11 @@
     "format": "prettier --write .",
     "typecheck": "echo skip typecheck",
     "build": "echo skip build",
-    "test": "echo skip test",
-    "release": "bumpp && ./release.sh"
+    "test": "echo skip test"
   },
   "devDependencies": {
     "@sxzz/eslint-config": "^8.0.0",
     "@sxzz/prettier-config": "^2.3.1",
-    "bumpp": "^11.0.1",
     "eslint": "^10.3.0",
     "prettier": "^3.8.3"
   },
