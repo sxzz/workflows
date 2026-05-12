@@ -22,6 +22,10 @@ on:
         required: false
         type: boolean
         default: false
+      persist-credentials:
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   release:
@@ -31,6 +35,8 @@ jobs:
     steps:
       - name: Setup JS
         uses: sxzz/workflows/setup-js@main
+        with:
+          persist-credentials: ${{ inputs.persist-credentials }}
 
       - name: Build
         run: ${{ inputs.build }}

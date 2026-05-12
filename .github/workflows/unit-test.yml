@@ -53,6 +53,11 @@ on:
         type: boolean
         default: false
 
+      persist-credentials:
+        required: false
+        type: boolean
+        default: false
+
 jobs:
   lint:
     runs-on: ${{ inputs.primary-os }}
@@ -60,6 +65,8 @@ jobs:
     steps:
       - name: Setup JS
         uses: sxzz/workflows/setup-js@main
+        with:
+          persist-credentials: ${{ inputs.persist-credentials }}
 
       - name: Build
         run: ${{ inputs.build }}
@@ -87,6 +94,7 @@ jobs:
         uses: sxzz/workflows/setup-js@main
         with:
           node-version: ${{ matrix.node-version }}
+          persist-credentials: ${{ inputs.persist-credentials }}
 
       - name: Build
         run: ${{ inputs.build }}
