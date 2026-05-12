@@ -1,7 +1,7 @@
 {
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@11.1.0",
+  "packageManager": "pnpm@11.1.1",
   "license": "MIT",
   "scripts": {
     "lint": "eslint .",
@@ -11,7 +11,7 @@
     "test": "echo skip test"
   },
   "devDependencies": {
-    "@sxzz/eslint-config": "^8.0.0",
+    "@sxzz/eslint-config": "^8.1.0",
     "@sxzz/prettier-config": "^2.3.1",
     "eslint": "^10.3.0",
     "prettier": "^3.8.3"
