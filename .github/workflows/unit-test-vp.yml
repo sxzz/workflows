@@ -1,4 +1,4 @@
-name: Unit Test Vite+
+name: Unit Test Vite Plus
 
 on:
   workflow_call:
@@ -59,7 +59,7 @@ jobs:
     if: ${{ !inputs.skip-check }}
     steps:
       - name: Setup Vite+
-        uses: bjmhe/workflows/setup-vite-plus@main
+        uses: sxzz/workflows/setup-vite-plus@main
         with:
           persist-credentials: ${{ inputs.persist-credentials }}
 
@@ -82,7 +82,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Setup Vite+
-        uses: bjmhe/workflows/setup-vite-plus@main
+        uses: sxzz/workflows/setup-vite-plus@main
         with:
           node-version: ${{ matrix.node-version }}
           persist-credentials: ${{ inputs.persist-credentials }}

@@ -1,5 +1,5 @@
-name: Setup Vite+
-description: Setup Vite+ environment
+name: Setup Vite Plus
+description: Setup Vite Plus environment
 
 inputs:
   persist-credentials:
@@ -32,7 +32,7 @@ runs:
         fetch-depth: "${{ inputs.fetch-all == 'true' && '0' || '1' }}"
 
     - name: Setup Vite+
-      uses: voidzero-dev/setup-vp@v1
+      uses: voidzero-dev/setup-vp@ca1c46663915d6c1042ae23bd39ab85718bfb0fa # v1.10.0
       with:
         node-version: ${{ inputs.node-version }}
         cache: ${{ inputs.cache }}
