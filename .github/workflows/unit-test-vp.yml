@@ -58,7 +58,7 @@ jobs:
     runs-on: ${{ inputs.primary-os }}
     if: ${{ !inputs.skip-check }}
     steps:
-      - name: Setup Vite+
+      - name: Setup Vite Plus
         uses: sxzz/workflows/setup-vite-plus@main
         with:
           persist-credentials: ${{ inputs.persist-credentials }}
@@ -81,7 +81,7 @@ jobs:
     if: ${{ !inputs.skip-test }}
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Setup Vite+
+      - name: Setup Vite Plus
         uses: sxzz/workflows/setup-vite-plus@main
         with:
           node-version: ${{ matrix.node-version }}

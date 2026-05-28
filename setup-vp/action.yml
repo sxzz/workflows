@@ -31,7 +31,7 @@ runs:
         persist-credentials: ${{ inputs.persist-credentials }}
         fetch-depth: "${{ inputs.fetch-all == 'true' && '0' || '1' }}"
 
-    - name: Setup Vite+
+    - name: Setup Vite Plus
       uses: voidzero-dev/setup-vp@ca1c46663915d6c1042ae23bd39ab85718bfb0fa # v1.10.0
       with:
         node-version: ${{ inputs.node-version }}
