@@ -38,6 +38,7 @@ See the [`examples/`](./examples) folder for sample workflow configurations:
 ## Actions
 
 - [`setup-js/action.yml`](./setup-js/action.yml): Sets up Node.js and installs dependencies
+- [`setup-vp/action.yml`](./setup-vp/action.yml): Sets up Vite Plus and installs dependencies
 
 ## Contributing
 
