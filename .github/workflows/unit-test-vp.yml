@@ -1,0 +1,94 @@
+name: Unit Test Vite+
+
+on:
+  workflow_call:
+    inputs:
+      primary-os:
+        required: false
+        type: string
+        default: ubuntu-latest
+
+      os-matrix:
+        required: false
+        type: string
+        default: '"ubuntu-latest", "windows-latest"'
+
+      node-versions:
+        required: false
+        type: string
+        default: '22,24,26'
+
+      check:
+        required: false
+        type: string
+        default: vp check
+
+      build:
+        required: false
+        type: string
+        default: vp run build
+
+      test:
+        required: false
+        type: string
+        default: vp test
+
+      skip-check:
+        required: false
+        type: boolean
+        default: false
+
+      skip-test:
+        required: false
+        type: boolean
+        default: false
+
+      build-for-check:
+        required: false
+        type: boolean
+        default: false
+
+      persist-credentials:
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  check:
+    runs-on: ${{ inputs.primary-os }}
+    if: ${{ !inputs.skip-check }}
+    steps:
+      - name: Setup Vite+
+        uses: bjmhe/workflows/setup-vite-plus@main
+        with:
+          persist-credentials: ${{ inputs.persist-credentials }}
+
+      - name: Build
+        run: ${{ inputs.build }}
+        if: ${{ inputs.build-for-check }}
+
+      - name: Check
+        run: ${{ inputs.check }}
+        if: ${{ inputs.check != '' }}
+
+  test:
+    strategy:
+      matrix:
+        os: ${{ fromJson(format('[{0}]', inputs.os-matrix)) }}
+        node-version: ${{ fromJson(format('[{0}]', inputs.node-versions)) }}
+      fail-fast: false
+
+    if: ${{ !inputs.skip-test }}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Setup Vite+
+        uses: bjmhe/workflows/setup-vite-plus@main
+        with:
+          node-version: ${{ matrix.node-version }}
+          persist-credentials: ${{ inputs.persist-credentials }}
+
+      - name: Build
+        run: ${{ inputs.build }}
+
+      - name: Unit Test
+        run: ${{ inputs.test }}
