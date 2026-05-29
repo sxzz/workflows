@@ -4,6 +4,6 @@ on: [pull_request]
 
 jobs:
   autofix:
-    uses: sxzz/workflows/.github/workflows/autofix.yml@main
+    uses: sxzz/workflows/.github/workflows/autofix.yml@vp
     permissions:
       contents: read

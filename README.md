@@ -25,11 +25,11 @@ To use a workflow, reference it in your project’s `.github/workflows/*.yml`:
 ```yaml
 # Example: Unit Test
 name: Unit Test
-uses: sxzz/workflows/.github/workflows/unit-test.yml@main
+uses: sxzz/workflows/.github/workflows/unit-test.yml@vp
 ```
 
-> [!TIP]
-> Use the `vp` branch instead of `main` to use the [Vite Plus](https://viteplus.dev) variant, e.g. `sxzz/workflows/.github/workflows/unit-test.yml@vp`.
+> [!NOTE]
+> This is the [Vite Plus](https://viteplus.dev) variant on the `vp` branch. Use the `main` branch instead for the standard variant, e.g. `sxzz/workflows/.github/workflows/unit-test.yml@main`.
 
 See the [`examples/`](./examples) folder for sample workflow configurations:
 
