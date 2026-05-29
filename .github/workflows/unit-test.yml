@@ -18,27 +18,22 @@ on:
         type: string
         default: '22,24,26,"latest"'
 
-      typecheck:
+      check:
         required: false
         type: string
-        default: pnpm run typecheck
-
-      lint:
-        required: false
-        type: string
-        default: pnpm run lint
+        default: vp check
 
       build:
         required: false
         type: string
-        default: pnpm run build
+        default: vp run build
 
       test:
         required: false
         type: string
-        default: pnpm run test
+        default: vp test
 
-      skip-lint:
+      skip-check:
         required: false
         type: boolean
         default: false
@@ -48,7 +43,7 @@ on:
         type: boolean
         default: false
 
-      build-for-lint:
+      build-for-check:
         required: false
         type: boolean
         default: false
@@ -59,26 +54,22 @@ on:
         default: false
 
 jobs:
-  lint:
+  check:
     runs-on: ${{ inputs.primary-os }}
-    if: ${{ !inputs.skip-lint }}
+    if: ${{ !inputs.skip-check }}
     steps:
-      - name: Setup JS
-        uses: sxzz/workflows/setup-js@main
+      - name: Setup Vite Plus
+        uses: sxzz/workflows/setup-vp@main
         with:
           persist-credentials: ${{ inputs.persist-credentials }}
 
       - name: Build
         run: ${{ inputs.build }}
-        if: ${{ inputs.build-for-lint }}
+        if: ${{ inputs.build-for-check }}
 
-      - name: Type Check
-        run: ${{ inputs.typecheck }}
-        if: ${{ inputs.typecheck != '' }}
-
-      - name: Lint
-        run: ${{ inputs.lint }}
-        if: ${{ inputs.lint != '' }}
+      - name: Check
+        run: ${{ inputs.check }}
+        if: ${{ inputs.check != '' }}
 
   test:
     strategy:
@@ -90,8 +81,8 @@ jobs:
     if: ${{ !inputs.skip-test }}
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Setup JS
-        uses: sxzz/workflows/setup-js@main
+      - name: Setup Vite Plus
+        uses: sxzz/workflows/setup-vp@main
         with:
           node-version: ${{ matrix.node-version }}
           persist-credentials: ${{ inputs.persist-credentials }}

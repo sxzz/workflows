@@ -11,7 +11,7 @@ on:
       command:
         required: false
         type: string
-        default: pnpm run lint --fix
+        default: vp check --fix
       os:
         required: false
         type: string
@@ -28,10 +28,9 @@ jobs:
       contents: read
 
     steps:
-      - name: Setup JS
-        uses: sxzz/workflows/setup-js@main
+      - name: Setup Vite Plus
+        uses: sxzz/workflows/setup-vp@main
         with:
-          no-frozen-lockfile: true
           persist-credentials: ${{ inputs.persist-credentials }}
 
       - name: Fix

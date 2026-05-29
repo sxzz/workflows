@@ -6,12 +6,12 @@ on:
       test:
         required: false
         type: string
-        default: pnpm run test --coverage
+        default: vp test run --coverage
 
       build:
         required: false
         type: string
-        default: pnpm run build
+        default: vp run build
 
 jobs:
   coverage:
@@ -19,8 +19,8 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - name: Setup JS
-        uses: sxzz/workflows/setup-js@main
+      - name: Setup Vite Plus
+        uses: sxzz/workflows/setup-vp@main
 
       - name: Build
         run: ${{ inputs.build }}

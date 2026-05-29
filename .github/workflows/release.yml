@@ -34,14 +34,14 @@ jobs:
       id-token: write
 
     steps:
-      - name: Setup JS
-        uses: sxzz/workflows/setup-js@main
+      - name: Setup Vite Plus
+        uses: sxzz/workflows/setup-vp@main
         with:
           fetch-all: true
           cache: false
 
       - name: Generate GitHub Changelog
-        run: pnpx changelogithub
+        run: vpx changelogithub
         continue-on-error: true
         if: ${{ inputs.github-release }}
         env:
@@ -52,5 +52,5 @@ jobs:
         if: ${{ inputs.build && inputs.publish }}
 
       - name: Publish to NPM
-        run: pnpm -r ${{ inputs.stage && 'stage ' || '' }}publish --access public --no-git-checks ${{ inputs['tag'] && format('--tag {0}', inputs['tag']) || '' }}
+        run: vp pm ${{ inputs.stage && 'stage ' || '' }}publish --access public --no-git-checks ${{ inputs['tag'] && format('--tag {0}', inputs['tag']) || '' }} -r
         if: ${{ inputs.publish || inputs.stage }}
