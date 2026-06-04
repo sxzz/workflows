@@ -36,8 +36,5 @@ runs:
       with:
         node-version: ${{ inputs.node-version }}
         cache: ${{ inputs.cache }}
+        run-install: ${{ inputs.auto-install }}
 
-    - name: Install dependencies
-      shell: bash
-      run: vp install
-      if: ${{ inputs.auto-install }}
