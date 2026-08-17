@@ -1,2 +1,2 @@
 trustPolicy: no-downgrade
-trustPolicyIgnoreAfter: 604800 # 7 days
+trustPolicyIgnoreAfter: 10080 # 7 days
