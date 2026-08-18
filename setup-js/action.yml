@@ -53,7 +53,8 @@ runs:
 
     - name: Install dependencies
       shell: bash
-      run:
-        ${{ inputs.package-manager }} install ${{ inputs.no-frozen-lockfile ==
-        'true' && '--no-frozen-lockfile' || '' }}
+      env:
+        PACKAGE_MANAGER: ${{ inputs.package-manager }}
+        NO_FROZEN_LOCKFILE: ${{ inputs.no-frozen-lockfile == 'true' && '--no-frozen-lockfile' || '' }}
+      run: $PACKAGE_MANAGER install $NO_FROZEN_LOCKFILE
       if: ${{ inputs.auto-install }}
