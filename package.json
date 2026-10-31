@@ -1,14 +1,14 @@
 {
   "type": "module",
   "private": true,
+  "license": "MIT",
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "12.5.0",
+      "version": "12.16.1",
       "onFail": "download"
     }
   },
-  "license": "MIT",
   "scripts": {
     "lint": "eslint .",
     "format": "prettier --write .",
@@ -17,10 +17,10 @@
     "test": "echo skip test"
   },
   "devDependencies": {
-    "@sxzz/eslint-config": "^8.5.0",
-    "@sxzz/prettier-config": "^2.3.2",
-    "eslint": "^10.8.1",
-    "prettier": "^3.9.6"
+    "@sxzz/eslint-config": "^8.9.2",
+    "@sxzz/prettier-config": "^2.3.3",
+    "eslint": "^10.14.0",
+    "prettier": "^3.9.10"
   },
   "prettier": "@sxzz/prettier-config"
 }
